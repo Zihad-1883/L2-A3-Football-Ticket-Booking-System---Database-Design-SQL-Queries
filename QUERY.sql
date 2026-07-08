@@ -192,3 +192,16 @@ FROM
   Bookings
 WHERE
   payment_status IS NULL;
+
+
+-- Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+
+SELECT
+  booking_id,
+  full_name,
+  fixture,
+  total_cost
+FROM
+  Bookings
+  INNER JOIN Users ON Bookings.user_id = Users.user_id
+  INNER JOIN Matches ON Bookings.match_id = Matches.match_id;
